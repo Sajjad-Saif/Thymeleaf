@@ -1,5 +1,5 @@
-# Images
+# Interface Screenshots
 
-- det.jpg  
-- list.jpg  
-- reg.jpg
+![Details Page](det.jpg)
+![List Page](list.jpg)
+![Registration Page](reg.jpg)
