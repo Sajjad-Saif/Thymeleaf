@@ -1,79 +1,109 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>User Details</title>
+    <title>User List</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #f6f9fb;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
             margin: 0;
         }
-        .details-card {
+        .container {
+            max-width: 950px;
+            margin: 50px auto;
             background: #fff;
-            padding: 32px 40px;
-            border-radius: 10px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-            min-width: 320px;
+            padding: 35px 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(44, 62, 80, 0.12);
         }
-        .details-card h2 {
-            margin-top: 0;
-            margin-bottom: 24px;
-            color: #333;
+        h2 {
             text-align: center;
+            color: #2d3e50;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
         }
-        .details-row {
-            margin-bottom: 16px;
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: #f9fbfc;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px #e3e3e3;
         }
-        .details-label {
-            font-weight: bold;
-            color: #555;
-            display: inline-block;
-            width: 110px;
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
         }
-        .back-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 8px 20px;
-            background: #007bff;
+        th {
+            background: linear-gradient(90deg, #007bff 60%, #00c6ff 100%);
             color: #fff;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 15px;
+            font-weight: 600;
+            border-bottom: 2px solid #e3e3e3;
+        }
+        tr {
             transition: background 0.2s;
         }
-        .back-link:hover {
-            background: #0056b3;
+        tr:hover {
+            background: #eaf6ff;
+        }
+        td {
+            color: #34495e;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        td:last-child {
+            text-align: center;
+        }
+        a {
+            color: #007bff;
+            background: #eaf6ff;
+            padding: 6px 14px;
+            border-radius: 5px;
+            font-size: 0.97em;
+            margin: 0 2px;
+            transition: background 0.2s, color 0.2s;
+            text-decoration: none;
+            border: 1px solid #cce6ff;
+        }
+        a:hover {
+            background: #007bff;
+            color: #fff;
+            border-color: #007bff;
+            text-decoration: none;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 15px; }
+            table, th, td { font-size: 0.95em; }
+            th, td { padding: 10px 6px; }
         }
     </style>
 </head>
 <body>
-    <div class="details-card">
-        <h2>User Details</h2>
-        <div class="details-row">
-            <span class="details-label">Name:</span>
-            <span th:text="${user.name}"></span>
-        </div>
-        <div class="details-row">
-            <span class="details-label">Student ID:</span>
-            <span th:text="${user.studentId}"></span>
-        </div>
-        <div class="details-row">
-            <span class="details-label">Email:</span>
-            <span th:text="${user.email}"></span>
-        </div>
-        <div class="details-row">
-            <span class="details-label">Phone:</span>
-            <span th:text="${user.phone}"></span>
-        </div>
-        <div class="details-row">
-            <span class="details-label">Address:</span>
-            <span th:text="${user.address}"></span>
-        </div>
-        <a class="back-link" href="/users">Back to List</a>
+    <div class="container">
+        <h2>User List</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Student ID</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.studentId}"></td>
+                <td th:text="${user.phone}"></td>
+                <td th:text="${user.address}"></td>
+                <td>
+                    <a th:href="@{'/users/' + ${user.id}}">View</a>
+                    <a th:href="@{'/users/edit/' + ${user.id}}">Edit</a>
+                </td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
