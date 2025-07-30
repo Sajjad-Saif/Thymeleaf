@@ -1,0 +1,51 @@
+<style>
+    .user-table {
+        width: 80%;
+        margin: 30px auto;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .user-table th, .user-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid #e0e0e0;
+        text-align: left;
+    }
+    .user-table th {
+        background: #f5f5f5;
+        font-weight: bold;
+    }
+    .user-table tr:hover {
+        background: #f1f7ff;
+    }
+    .user-actions a {
+        color: #007bff;
+        text-decoration: none;
+        margin-right: 10px;
+        transition: color 0.2s;
+    }
+    .user-actions a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+</style>
+
+<h2 style="text-align:center;">User List</h2>
+<table class="user-table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}"></td>
+        <td class="user-actions">
+            <a th:href="@{'/users/' + ${user.id}}">View</a>
+            <a th:href="@{'/users/edit/' + ${user.id}}">Edit</a>
+        </td>
+    </tr>
+</table>

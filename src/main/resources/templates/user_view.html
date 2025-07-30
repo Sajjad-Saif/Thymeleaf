@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f6f9fb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .details-card {
+            background: #fff;
+            padding: 32px 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            min-width: 320px;
+        }
+        .details-card h2 {
+            margin-top: 0;
+            margin-bottom: 24px;
+            color: #333;
+            text-align: center;
+        }
+        .details-row {
+            margin-bottom: 16px;
+        }
+        .details-label {
+            font-weight: bold;
+            color: #555;
+            display: inline-block;
+            width: 110px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 20px;
+            background: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+        .back-link:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="details-card">
+        <h2>User Details</h2>
+        <div class="details-row">
+            <span class="details-label">Name:</span>
+            <span th:text="${user.name}"></span>
+        </div>
+        <div class="details-row">
+            <span class="details-label">Student ID:</span>
+            <span th:text="${user.studentId}"></span>
+        </div>
+        <div class="details-row">
+            <span class="details-label">Email:</span>
+            <span th:text="${user.email}"></span>
+        </div>
+        <div class="details-row">
+            <span class="details-label">Phone:</span>
+            <span th:text="${user.phone}"></span>
+        </div>
+        <div class="details-row">
+            <span class="details-label">Address:</span>
+            <span th:text="${user.address}"></span>
+        </div>
+        <a class="back-link" href="/users">Back to List</a>
+    </div>
+</body>
+</html>
