@@ -1,56 +1,199 @@
-<style>
-    .register-form {
-        max-width: 400px;
-        margin: 30px auto;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        background: #f9f9f9;
-        font-family: Arial, sans-serif;
-    }
-    .register-form label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-    }
-    .register-form input[type="text"],
-    .register-form input[type="email"] {
-        width: 100%;
-        padding: 7px;
-        margin-bottom: 15px;
-        border: 1px solid #bbb;
-        border-radius: 4px;
-    }
-    .register-form button {
-        width: 100%;
-        padding: 10px;
-        background: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-    .register-form button:hover {
-        background: #0056b3;
-    }
-</style>
+register.html-----------------------------------------------------------------
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #6dd5ed 0%, #2193b0 100%);
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 420px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 36px 32px 32px 32px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(33,147,176,0.18), 0 1.5px 6px rgba(0,0,0,0.08);
+            position: relative;
+        }
+        h2 {
+            text-align: center;
+            color: #2193b0;
+            margin-bottom: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        label {
+            display: block;
+            margin-top: 18px;
+            font-weight: 500;
+            color: #333;
+            letter-spacing: 0.5px;
+        }
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 10px 12px;
+            margin-top: 7px;
+            border: 1px solid #b2ebf2;
+            border-radius: 6px;
+            background: #f4fcff;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus, input[type="email"]:focus {
+            border-color: #2193b0;
+            outline: none;
+            background: #e3f7fc;
+        }
+        button {
+            width: 100%;
+            margin-top: 28px;
+            padding: 12px 0;
+            background: linear-gradient(90deg, #2193b0 0%, #6dd5ed 100%);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(33,147,176,0.12);
+            transition: background 0.2s, transform 0.2s;
+        }
+        button:hover {
+            background: linear-gradient(90deg, #6dd5ed 0%, #2193b0 100%);
+            transform: translateY(-2px) scale(1.02);
+        }
+        @media (max-width: 500px) {
+            .container {
+                padding: 20px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+        <form th:action="@{/register}" th:object="${user}" method="post">
+            <label>Name:</label>
+            <input type="text" th:field="*{name}" />
 
-<form class="register-form" th:action="@{/register}" th:object="${user}" method="post">
-    <label for="name">Name:</label>
-    <input type="text" th:field="*{name}" id="name" />
+            <label>Student ID:</label>
+            <input type="text" th:field="*{studentId}" />
 
-    <label for="studentId">Student ID:</label>
-    <input type="text" th:field="*{studentId}" id="studentId" />
+            <label>Email:</label>
+            <input type="email" th:field="*{email}" />
 
-    <label for="email">Email:</label>
-    <input type="email" th:field="*{email}" id="email" />
+            <label>Phone:</label>
+            <input type="text" th:field="*{phone}" />
 
-    <label for="phone">Phone:</label>
-    <input type="text" th:field="*{phone}" id="phone" />
+            <label>Address:</label>
+            <input type="text" th:field="*{address}" />
 
-    <label for="address">Address:</label>
-    <input type="text" th:field="*{address}" id="address" />
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>register.html-----------------------------------------------------------------
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #6dd5ed 0%, #2193b0 100%);
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 420px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 36px 32px 32px 32px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(33,147,176,0.18), 0 1.5px 6px rgba(0,0,0,0.08);
+            position: relative;
+        }
+        h2 {
+            text-align: center;
+            color: #2193b0;
+            margin-bottom: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        label {
+            display: block;
+            margin-top: 18px;
+            font-weight: 500;
+            color: #333;
+            letter-spacing: 0.5px;
+        }
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 10px 12px;
+            margin-top: 7px;
+            border: 1px solid #b2ebf2;
+            border-radius: 6px;
+            background: #f4fcff;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus, input[type="email"]:focus {
+            border-color: #2193b0;
+            outline: none;
+            background: #e3f7fc;
+        }
+        button {
+            width: 100%;
+            margin-top: 28px;
+            padding: 12px 0;
+            background: linear-gradient(90deg, #2193b0 0%, #6dd5ed 100%);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(33,147,176,0.12);
+            transition: background 0.2s, transform 0.2s;
+        }
+        button:hover {
+            background: linear-gradient(90deg, #6dd5ed 0%, #2193b0 100%);
+            transform: translateY(-2px) scale(1.02);
+        }
+        @media (max-width: 500px) {
+            .container {
+                padding: 20px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+        <form th:action="@{/register}" th:object="${user}" method="post">
+            <label>Name:</label>
+            <input type="text" th:field="*{name}" />
 
-    <button type="submit">Register</button>
-</form>
+            <label>Student ID:</label>
+            <input type="text" th:field="*{studentId}" />
+
+            <label>Email:</label>
+            <input type="email" th:field="*{email}" />
+
+            <label>Phone:</label>
+            <input type="text" th:field="*{phone}" />
+
+            <label>Address:</label>
+            <input type="text" th:field="*{address}" />
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>
