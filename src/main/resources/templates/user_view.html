@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>User List</title>
+    <title>User Details</title>
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -9,101 +9,83 @@
             margin: 0;
         }
         .container {
-            max-width: 950px;
+            max-width: 420px;
             margin: 50px auto;
             background: #fff;
-            padding: 35px 40px;
+            padding: 36px 32px 28px 32px;
             border-radius: 16px;
             box-shadow: 0 8px 32px rgba(44, 62, 80, 0.12);
+            position: relative;
         }
         h2 {
             text-align: center;
             color: #2d3e50;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
             letter-spacing: 1px;
         }
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            background: #f9fbfc;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px #e3e3e3;
+        .details {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            row-gap: 18px;
+            column-gap: 12px;
+            margin-bottom: 18px;
         }
-        th, td {
-            padding: 14px 16px;
-            text-align: left;
-        }
-        th {
-            background: linear-gradient(90deg, #007bff 60%, #00c6ff 100%);
-            color: #fff;
+        .label {
             font-weight: 600;
-            border-bottom: 2px solid #e3e3e3;
-        }
-        tr {
-            transition: background 0.2s;
-        }
-        tr:hover {
-            background: #eaf6ff;
-        }
-        td {
             color: #34495e;
-            border-bottom: 1px solid #f0f0f0;
+            font-size: 1rem;
+            align-self: center;
         }
-        td:last-child {
-            text-align: center;
+        .value {
+            color: #2980b9;
+            background: #f4f8fb;
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-size: 1rem;
+            align-self: center;
+            box-shadow: 0 1px 2px #e0eafc;
         }
         a {
-            color: #007bff;
-            background: #eaf6ff;
-            padding: 6px 14px;
-            border-radius: 5px;
-            font-size: 0.97em;
-            margin: 0 2px;
-            transition: background 0.2s, color 0.2s;
+            color: #fff;
+            background: #2980b9;
             text-decoration: none;
-            border: 1px solid #cce6ff;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 500;
+            box-shadow: 0 2px 8px #cfdef3;
+            display: block;
+            text-align: center;
+            margin-top: 18px;
+            transition: background 0.2s;
         }
         a:hover {
-            background: #007bff;
-            color: #fff;
-            border-color: #007bff;
-            text-decoration: none;
-        }
-        @media (max-width: 700px) {
-            .container { padding: 15px; }
-            table, th, td { font-size: 0.95em; }
-            th, td { padding: 10px 6px; }
+            background: #1c5d99;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>User List</h2>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Student ID</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>Actions</th>
-            </tr>
-            <tr th:each="user : ${users}">
-                <td th:text="${user.id}"></td>
-                <td th:text="${user.name}"></td>
-                <td th:text="${user.email}"></td>
-                <td th:text="${user.studentId}"></td>
-                <td th:text="${user.phone}"></td>
-                <td th:text="${user.address}"></td>
-                <td>
-                    <a th:href="@{'/users/' + ${user.id}}">View</a>
-                    <a th:href="@{'/users/edit/' + ${user.id}}">Edit</a>
-                </td>
-            </tr>
-        </table>
+        <h2>User Details</h2>
+        <div class="details">
+            <span class="label">ID:</span>
+            <span class="value" th:text="${user.id}"></span>
+
+            <span class="label">Name:</span>
+            <span class="value" th:text="${user.name}"></span>
+
+            <span class="label">Email:</span>
+            <span class="value" th:text="${user.email}"></span>
+
+            <span class="label">Student ID:</span>
+            <span class="value" th:text="${user.studentId}"></span>
+
+            <span class="label">Phone:</span>
+            <span class="value" th:text="${user.phone}"></span>
+
+            <span class="label">Address:</span>
+            <span class="value" th:text="${user.address}"></span>
+        </div>
+        <a href="/users">Back to List</a>
     </div>
 </body>
 </html>
